@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Resume — Krushna Dahatonde</title>
+<link rel="stylesheet" href="../css/style.css"/>
+<style>
+.page-hero { padding: 130px 6vw 60px; border-bottom: 1px solid var(--border); }
+.page-hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem,5vw,3.5rem); font-weight: 800; }
+.page-hero p  { color: var(--muted); margin-top: .6rem; }
+.dl-actions { display: flex; gap: 1rem; margin-top: 1.5rem; flex-wrap: wrap; }
+
+/* RESUME VIEWER */
+.resume-layout { display: grid; grid-template-columns: 1fr 340px; gap: 3rem; align-items: start; }
+
+/* Resume card (styled HTML version) */
+.resume-card {
+  background: #fff; color: #111;
+  border-radius: 16px; padding: 3rem;
+  box-shadow: 0 20px 60px rgba(0,0,0,.4);
+  font-family: 'Inter', sans-serif;
+}
+.rc-header { display: flex; align-items: center; gap: 1.5rem; margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 2px solid #0D9488; }
+.rc-avatar {
+  width: 72px; height: 72px; border-radius: 50%;
+  background: #E0F2F1; border: 3px solid #0D9488;
+  display: flex; align-items: center; justify-content: center; font-size: 2rem;
+  flex-shrink: 0; overflow: hidden;
+}
+.rc-avatar img { width: 100%; height: 100%; object-fit: cover; }
+.rc-name { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 800; color: #0B1829; line-height: 1.1; }
+.rc-title { color: #0D9488; font-weight: 600; font-size: .9rem; margin-top: .2rem; }
+.rc-contacts { display: flex; flex-wrap: wrap; gap: .5rem .9rem; margin-top: .5rem; }
+.rc-contacts span { font-size: .75rem; color: #475569; }
+
+.rc-section { margin-bottom: 1.4rem; }
+.rc-section-title {
+  font-size: .7rem; font-weight: 800; letter-spacing: .12em;
+  text-transform: uppercase; color: #0D9488;
+  border-bottom: 1.5px solid #E0F2F1;
+  padding-bottom: .35rem; margin-bottom: .8rem;
+}
+.rc-item { margin-bottom: .8rem; }
+.rc-item-hd { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: .3rem; }
+.rc-item-title { font-weight: 700; font-size: .88rem; color: #0B1829; }
+.rc-item-date  { font-size: .75rem; color: #64748B; }
+.rc-item-sub   { font-size: .8rem; color: #0D9488; font-weight: 600; margin-bottom: .25rem; }
+.rc-item-body  { font-size: .78rem; color: #475569; line-height: 1.6; }
+.rc-bullets    { padding-left: 1rem; margin-top: .25rem; }
+.rc-bullets li { font-size: .78rem; color: #475569; line-height: 1.6; margin-bottom: .2rem; }
+.rc-skills-row { display: flex; flex-wrap: wrap; gap: .35rem; }
+.rc-skill-tag  { font-size: .72rem; padding: .2rem .6rem; border-radius: 5px; background: #E0F2F1; color: #0B1829; font-weight: 500; }
+
+/* RIGHT: sidebar */
+.resume-sidebar { position: sticky; top: 90px; display: flex; flex-direction: column; gap: 1.2rem; }
+.sidebar-card {
+  background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 1.4rem;
+}
+.sidebar-card h3 { font-size: .85rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--teal-light); margin-bottom: 1rem; }
+.dl-btn-large {
+  display: flex; align-items: center; justify-content: center; gap: .6rem;
+  width: 100%; padding: .9rem; border-radius: 10px;
+  background: var(--teal); color: #fff; font-weight: 700; font-size: .95rem;
+  border: none; cursor: pointer; text-decoration: none;
+  transition: background .2s, transform .15s; margin-bottom: .75rem;
+}
+.dl-btn-large:hover { background: var(--teal-light); transform: translateY(-1px); }
+.dl-btn-secondary {
+  display: flex; align-items: center; justify-content: center; gap: .6rem;
+  width: 100%; padding: .75rem; border-radius: 10px;
+  background: transparent; color: var(--muted); font-weight: 600; font-size: .875rem;
+  border: 1.5px solid var(--border); cursor: pointer; text-decoration: none;
+  transition: border-color .2s, color .2s;
+}
+.dl-btn-secondary:hover { border-color: var(--teal); color: var(--teal-light); }
+
+.info-row { display: flex; justify-content: space-between; font-size: .83rem; padding: .45rem 0; border-bottom: 1px solid var(--border); }
+.info-row:last-child { border: none; }
+.info-row .lbl { color: var(--muted); }
+.info-row .val { font-weight: 600; }
+
+@media(max-width:900px){ .resume-layout { grid-template-columns: 1fr; } .resume-sidebar { position: static; } }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="../index.html" class="nav-logo">Krushna<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="projects.html">Projects</a></li>
+    <li><a href="resume.html" class="active">Resume</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <a href="contact.html" class="nav-cta">Hire Me →</a>
+  <button class="nav-mobile-btn">☰</button>
+</nav>
+
+<div class="page-hero">
+  <div class="section-tag">CV / Resume</div>
+  <h1>My <em style="font-style:normal;color:var(--teal-light)">Resume</em></h1>
+  <p>Electronics & Telecommunication Engineer · Updated 2025</p>
+  <div class="dl-actions">
+    <a href="#" class="btn btn-primary" id="downloadBtn" onclick="downloadResume()">⬇ Download PDF</a>
+    <a href="contact.html" class="btn btn-secondary">✉ Contact Me</a>
+  </div>
+</div>
+
+<section class="section">
+  <div class="resume-layout">
+
+    <!-- RESUME HTML CARD -->
+    <div class="resume-card reveal" id="resumeContent">
+
+      <!-- HEADER -->
+      <div class="rc-header">
+        <div class="rc-avatar">
+          <!-- Replace with: <img src="../your-photo.jpg" alt="Krushna"> -->
+          🧑‍💻
+        </div>
+        <div>
+          <div class="rc-name">Krushna Balasaheb Dahatonde</div>
+          <div class="rc-title">Electronics & Telecommunication Engineering Student</div>
+          <div class="rc-contacts">
+            <span>📞 +91-9322397154</span>
+            <span>✉ krushnadahatonde049@gmail.com</span>
+            <span>📍 Ahilyanagar, MH</span>
+            <span>💼 linkedin.com/in/myprofile</span>
+            <span>🐙 github.com/krushna</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- OBJECTIVE -->
+      <div class="rc-section">
+        <div class="rc-section-title">Objective</div>
+        <div class="rc-item-body">Final-year E&TC student who enjoys turning theory into working hardware — from embedded firmware to wireless signal chains. Looking for an entry-level Electronics/Embedded role where I can keep building across IoT, VLSI, and applied ML for communications.</div>
+      </div>
+
+      <!-- EDUCATION -->
+      <div class="rc-section">
+        <div class="rc-section-title">Education</div>
+        <div class="rc-item">
+          <div class="rc-item-hd"><span class="rc-item-title">B.E. — Electronics & Telecommunication Engineering</span><span class="rc-item-date">2023–2027 (Expected)</span></div>
+          <div class="rc-item-sub">Your College Name, University Name · Ahilyanagar</div>
+          <div class="rc-item-body">CGPA: <strong>7.52 / 10</strong> (Current)</div>
+        </div>
+        <div class="rc-item">
+          <div class="rc-item-hd"><span class="rc-item-title">HSC (12th) — Science (PCM)</span><span class="rc-item-date">2021–2023</span></div>
+          <div class="rc-item-sub">Jawahar Junior College, Ahilyanagar</div>
+          <div class="rc-item-body">60.67%</div>
+        </div>
+        <div class="rc-item">
+          <div class="rc-item-hd"><span class="rc-item-title">SSC (10th)</span><span class="rc-item-date">2021</span></div>
+          <div class="rc-item-sub">Jawahar Madhyamik Vidyalaya Chanda, Ahilyanagar</div>
+          <div class="rc-item-body">80.20%</div>
+        </div>
+      </div>
+
+      <!-- EXPERIENCE -->
+      <div class="rc-section">
+        <div class="rc-section-title">Internship Experience</div>
+        <div class="rc-item">
+          <div class="rc-item-hd"><span class="rc-item-title">Embedded Systems Intern</span><span class="rc-item-date">Jun 2025 – Jul 2025</span></div>
+          <div class="rc-item-sub">EVER Electronics Pvt. Ltd. · Pune</div>
+          <ul class="rc-bullets">
+            <li>Contributed to firmware for ARM Cortex-M products, writing and debugging Embedded C alongside senior firmware team.</li>
+            <li>Ran hardware-in-loop tests on sensor interfacing modules.</li>
+            <li>Tightened test documentation, cutting bug-reporting turnaround by 20%.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- PROJECTS -->
+      <div class="rc-section">
+        <div class="rc-section-title">Technical Projects</div>
+        <div class="rc-item">
+          <div class="rc-item-hd"><span class="rc-item-title">5G NR Channel Estimation using Deep Learning</span><span class="rc-item-date">Final Year</span></div>
+          <div class="rc-item-sub">Python · TensorFlow · MATLAB 5G Toolbox</div>
+          <ul class="rc-bullets"><li>Trained CNN for 5G NR OFDM channel estimation; 50K+ samples; ~15% lower BER vs MMSE at 10 dB SNR.</li></ul>
+        </div>
+        <div class="rc-item">
+          <div class="rc-item-hd"><span class="rc-item-title">Smart IoT-Based Health Monitoring System</span><span class="rc-item-date">Jan–Mar 2026</span></div>
+          <div class="rc-item-sub">ESP32 · MAX30100 · Firebase · Blynk IoT</div>
+          <ul class="rc-bullets"><li>Real-time cloud vitals monitor; Kalman filter reduces PPG error below 2%; alerts in under 3 seconds.</li></ul>
+        </div>
+        <div class="rc-item">
+          <div class="rc-item-hd"><span class="rc-item-title">FPGA-Based Digital FIR Filter Design</span><span class="rc-item-date">Aug–Nov 2025</span></div>
+          <div class="rc-item-sub">Verilog HDL · Xilinx Vivado · MATLAB</div>
+          <ul class="rc-bullets"><li>32-tap FIR on Artix-7; pipelined MAC cut resources 18%; max clock 120 MHz.</li></ul>
+        </div>
+        <div class="rc-item">
+          <div class="rc-item-hd"><span class="rc-item-title">GSM-Based Home Automation & Security</span><span class="rc-item-date">Sophomore</span></div>
+          <div class="rc-item-sub">Arduino UNO · SIM800L · PIR Sensor</div>
+          <ul class="rc-bullets"><li>SMS-controlled appliance & intrusion detection; no internet dependency; 7m PIR range.</li></ul>
+        </div>
+      </div>
+
+      <!-- SKILLS -->
+      <div class="rc-section">
+        <div class="rc-section-title">Technical Skills</div>
+        <div class="rc-item-body" style="margin-bottom:.4rem;"><strong>Languages:</strong></div>
+        <div class="rc-skills-row" style="margin-bottom:.6rem;">
+          <span class="rc-skill-tag">C</span><span class="rc-skill-tag">C++</span><span class="rc-skill-tag">Python</span><span class="rc-skill-tag">Embedded C</span><span class="rc-skill-tag">Verilog HDL</span>
+        </div>
+        <div class="rc-item-body" style="margin-bottom:.4rem;"><strong>Tools:</strong></div>
+        <div class="rc-skills-row" style="margin-bottom:.6rem;">
+          <span class="rc-skill-tag">MATLAB</span><span class="rc-skill-tag">Simulink</span><span class="rc-skill-tag">Xilinx Vivado</span><span class="rc-skill-tag">Keil µVision</span><span class="rc-skill-tag">Proteus</span><span class="rc-skill-tag">LTSpice</span><span class="rc-skill-tag">KiCad</span><span class="rc-skill-tag">Git</span><span class="rc-skill-tag">Linux</span>
+        </div>
+        <div class="rc-item-body" style="margin-bottom:.4rem;"><strong>Platforms:</strong></div>
+        <div class="rc-skills-row">
+          <span class="rc-skill-tag">Arduino</span><span class="rc-skill-tag">ESP32</span><span class="rc-skill-tag">Raspberry Pi</span><span class="rc-skill-tag">STM32</span>
+        </div>
+      </div>
+
+      <!-- CERTS & ACHIEVEMENTS -->
+      <div class="rc-section">
+        <div class="rc-section-title">Certifications</div>
+        <div class="rc-item-body">Cisco – Introduction to IoT &nbsp;|&nbsp; NPTEL – DSP (Elite + Silver) &nbsp;|&nbsp; Internshala – Embedded Systems & IoT &nbsp;|&nbsp; AWS Cloud Practitioner Essentials</div>
+      </div>
+      <div class="rc-section">
+        <div class="rc-section-title">Achievements</div>
+        <ul class="rc-bullets">
+          <li>1st Prize, TechFest 2024 – Project Competition</li>
+          <li>Co-authored paper, IEEE/Springer 2025</li>
+          <li>Top 10 Finalist, Smart India Hackathon</li>
+          <li>Technical Lead, Electronics & Robotics Club</li>
+        </ul>
+      </div>
+
+    </div><!-- /resume-card -->
+
+    <!-- SIDEBAR -->
+    <div class="resume-sidebar reveal reveal-delay-1">
+      <div class="sidebar-card">
+        <h3>Download</h3>
+        <a href="#" class="dl-btn-large" onclick="downloadResume(); return false;">⬇ Download PDF Resume</a>
+        <a href="#" class="dl-btn-secondary" onclick="window.print(); return false;">🖨 Print Resume</a>
+        <p style="font-size:.75rem; color:var(--muted); margin-top:.8rem; line-height:1.5;">
+          To attach your actual PDF, replace the <code>href="#"</code> with your PDF file path, e.g. <code>href="../resume.pdf"</code>
+        </p>
+      </div>
+
+      <div class="sidebar-card">
+        <h3>Quick Info</h3>
+        <div class="info-row"><span class="lbl">Name</span><span class="val">Krushna Dahatonde</span></div>
+        <div class="info-row"><span class="lbl">Degree</span><span class="val">B.E. E&TC</span></div>
+        <div class="info-row"><span class="lbl">CGPA</span><span class="val">7.52 / 10</span></div>
+        <div class="info-row"><span class="lbl">Graduation</span><span class="val">2027 (Expected)</span></div>
+        <div class="info-row"><span class="lbl">Experience</span><span class="val">1 Internship</span></div>
+        <div class="info-row"><span class="lbl">Location</span><span class="val">Ahilyanagar, MH</span></div>
+        <div class="info-row"><span class="lbl">Status</span><span class="val" style="color:var(--teal-light)">Open to Roles</span></div>
+      </div>
+
+      <div class="sidebar-card">
+        <h3>Links</h3>
+        <div style="display:flex; flex-direction:column; gap:.6rem;">
+          <a href="mailto:krushnadahatonde049@gmail.com" class="dl-btn-secondary">✉ Email Me</a>
+          <a href="https://linkedin.com/in/myprofile" target="_blank" class="dl-btn-secondary">💼 LinkedIn</a>
+          <a href="https://github.com/krushna" target="_blank" class="dl-btn-secondary">🐙 GitHub</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-logo">Krushna<span>.</span></div>
+  <div class="footer-links">
+    <a href="../index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="projects.html">Projects</a>
+    <a href="resume.html">Resume</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <p class="footer-copy">© 2025 Krushna Balasaheb Dahatonde</p>
+</footer>
+
+<script src="../js/main.js"></script>
+<script>
+function downloadResume() {
+  // When you have an actual PDF, change this to: window.open('../resume.pdf');
+  // For now, we print the page as PDF
+  alert('To enable PDF download:\n1. Save your resume as resume.pdf\n2. Place it in the /portfolio/ folder\n3. Update the href in resume.html to "../resume.pdf"');
+}
+</script>
+</body>
+</html>

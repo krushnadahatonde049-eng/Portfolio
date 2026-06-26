@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>About — Krushna Dahatonde</title>
+<link rel="stylesheet" href="../css/style.css"/>
+<style>
+.page-hero {
+  padding: 130px 6vw 60px;
+  background: linear-gradient(180deg, rgba(13,148,136,.07) 0%, transparent 100%);
+  border-bottom: 1px solid var(--border);
+}
+.page-hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 5vw, 3.5rem); font-weight: 800; }
+.page-hero p  { color: var(--muted); margin-top: .6rem; font-size: 1rem; }
+
+/* ABOUT GRID */
+.about-grid { display: grid; grid-template-columns: 340px 1fr; gap: 4rem; align-items: start; }
+.about-photo-col { position: sticky; top: 90px; }
+.about-photo-frame {
+  width: 100%; aspect-ratio: 3/4;
+  border-radius: 20px;
+  border: 2px solid rgba(13,148,136,.3);
+  overflow: hidden; background: var(--navy-light);
+  box-shadow: 0 20px 60px rgba(0,0,0,.4);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 1.5rem;
+}
+.about-photo-frame img { width: 100%; height: 100%; object-fit: cover; }
+.photo-ph { text-align: center; color: var(--muted); }
+.photo-ph .icon { font-size: 4rem; display: block; margin-bottom: .5rem; }
+
+.quick-info { display: flex; flex-direction: column; gap: .75rem; }
+.qi {
+  display: flex; align-items: center; gap: .75rem;
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 10px; padding: .85rem 1rem;
+  font-size: .85rem;
+}
+.qi .qi-icon { font-size: 1.1rem; width: 24px; text-align: center; }
+.qi-label { color: var(--muted); font-size: .72rem; text-transform: uppercase; letter-spacing: .07em; }
+.qi-val   { font-weight: 600; font-size: .85rem; }
+
+/* CONTENT */
+.about-text h2 { font-family: 'Playfair Display', serif; font-size: 1.7rem; font-weight: 700; margin-bottom: 1rem; }
+.about-text h2 em { font-style: normal; color: var(--teal-light); }
+.about-text p  { color: var(--muted); line-height: 1.8; margin-bottom: 1rem; font-size: .95rem; }
+
+/* Skills bars */
+.skills-section { margin-top: 2.5rem; }
+.skill-bar-group { margin-bottom: 1.4rem; }
+.skill-bar-header { display: flex; justify-content: space-between; font-size: .85rem; font-weight: 600; margin-bottom: .45rem; }
+.skill-bar-track { height: 7px; background: var(--navy-light); border-radius: 100px; overflow: hidden; }
+.skill-bar-fill  { height: 100%; border-radius: 100px; background: linear-gradient(90deg, var(--teal), var(--blue-light)); transition: width 1.2s ease; width: 0; }
+.skill-bar-fill.animate { width: var(--w); }
+.skill-pct { color: var(--teal-light); font-size: .8rem; }
+
+/* Skill categories */
+.skill-cats { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.5rem; }
+.skill-cat { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1.2rem; }
+.skill-cat-title { font-size: .8rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--teal-light); margin-bottom: .8rem; }
+.skill-pills { display: flex; flex-wrap: wrap; gap: .45rem; }
+
+/* Timeline */
+.timeline { position: relative; padding-left: 2rem; }
+.timeline::before { content: ''; position: absolute; left: .4rem; top: 0; bottom: 0; width: 1.5px; background: var(--border); }
+.tl-item { position: relative; margin-bottom: 2rem; }
+.tl-item::before {
+  content: ''; position: absolute;
+  left: -1.65rem; top: .35rem;
+  width: 10px; height: 10px; border-radius: 50%;
+  background: var(--teal); border: 2px solid var(--navy);
+  box-shadow: 0 0 0 3px rgba(13,148,136,.2);
+}
+.tl-date  { font-size: .78rem; color: var(--teal-light); font-weight: 600; text-transform: uppercase; letter-spacing: .06em; margin-bottom: .3rem; }
+.tl-title { font-weight: 700; font-size: .95rem; }
+.tl-sub   { color: var(--muted); font-size: .85rem; margin-top: .15rem; }
+.tl-desc  { color: var(--muted); font-size: .85rem; margin-top: .5rem; line-height: 1.6; }
+
+/* Interests */
+.interests-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: .85rem; margin-top: 1rem; }
+.interest-card {
+  background: var(--card); border: 1px solid var(--border); border-radius: 12px;
+  padding: 1rem; text-align: center; font-size: .85rem; font-weight: 500;
+  transition: border-color .2s; cursor: default;
+}
+.interest-card:hover { border-color: rgba(13,148,136,.4); }
+.interest-card .ic-icon { font-size: 1.6rem; margin-bottom: .4rem; }
+
+@media (max-width: 900px) { .about-grid { grid-template-columns: 1fr; } .about-photo-col { position: static; } }
+@media (max-width: 600px) { .skill-cats { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="../index.html" class="nav-logo">Krushna<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="about.html" class="active">About</a></li>
+    <li><a href="projects.html">Projects</a></li>
+    <li><a href="resume.html">Resume</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <a href="contact.html" class="nav-cta">Hire Me →</a>
+  <button class="nav-mobile-btn">☰</button>
+</nav>
+
+<div class="page-hero">
+  <div class="section-tag">Who I Am</div>
+  <h1>About <em style="font-style:normal; color:var(--teal-light)">Me</em></h1>
+  <p>E&TC Engineer · Embedded Systems · IoT · 5G Wireless · VLSI</p>
+</div>
+
+<section class="section">
+  <div class="about-grid">
+
+    <!-- LEFT COL: photo + quick info -->
+    <div class="about-photo-col reveal">
+      <div class="about-photo-frame">
+        <!-- Replace the div below with: <img src="../your-photo.jpg" alt="Krushna Dahatonde"> -->
+        <div class="photo-ph">
+          <span class="icon">🧑‍💻</span>
+          <p style="font-size:.8rem; padding:0 1rem;">Add your photo here.<br>Replace with &lt;img&gt; tag.</p>
+        </div>
+      </div>
+
+      <div class="quick-info">
+        <div class="qi">
+          <span class="qi-icon">📍</span>
+          <div><div class="qi-label">Location</div><div class="qi-val">Ahilyanagar, Maharashtra</div></div>
+        </div>
+        <div class="qi">
+          <span class="qi-icon">🎓</span>
+          <div><div class="qi-label">Degree</div><div class="qi-val">B.E. E&TC · 2023–2027</div></div>
+        </div>
+        <div class="qi">
+          <span class="qi-icon">📊</span>
+          <div><div class="qi-label">CGPA</div><div class="qi-val">7.52 / 10</div></div>
+        </div>
+        <div class="qi">
+          <span class="qi-icon">💼</span>
+          <div><div class="qi-label">Internship</div><div class="qi-val">EVER Electronics · Pune</div></div>
+        </div>
+        <div class="qi">
+          <span class="qi-icon">🌐</span>
+          <div><div class="qi-label">Languages</div><div class="qi-val">English · Hindi · Marathi</div></div>
+        </div>
+        <div class="qi">
+          <span class="qi-icon">📞</span>
+          <div><div class="qi-label">Phone</div><div class="qi-val">+91-9322397154</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT COL -->
+    <div class="about-text reveal reveal-delay-1">
+      <h2>Hardware meets <em>intelligence</em></h2>
+      <p>I'm Krushna Balasaheb Dahatonde — a final-year Electronics & Telecommunication Engineering student with a deep interest in embedded systems, VLSI, and wireless communication. I love the challenge of turning abstract circuit theory and signal math into systems that actually work in the real world.</p>
+      <p>My project work spans IoT health monitors with cloud dashboards, FPGA-based digital filters for real-time audio, and a CNN-based deep learning model for 5G NR channel estimation. Each project has pushed me to go deeper — from optimizing Verilog MAC units to simulating 50,000+ fading channel samples in MATLAB.</p>
+      <p>During my internship at EVER Electronics, Pune, I contributed to ARM Cortex-M firmware and ran hardware-in-loop tests — my first real taste of production-grade embedded development. I want to keep building at that intersection of firmware, hardware, and algorithms.</p>
+
+      <!-- SKILLS BARS -->
+      <div class="skills-section">
+        <h2 style="font-size:1.3rem; margin-bottom:1.2rem;">Core Proficiencies</h2>
+        <div class="skill-bar-group"><div class="skill-bar-header"><span>Embedded C / C++</span><span class="skill-pct">88%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="--w:88%"></div></div></div>
+        <div class="skill-bar-group"><div class="skill-bar-header"><span>Python & TensorFlow</span><span class="skill-pct">80%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="--w:80%"></div></div></div>
+        <div class="skill-bar-group"><div class="skill-bar-header"><span>MATLAB / Simulink</span><span class="skill-pct">82%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="--w:82%"></div></div></div>
+        <div class="skill-bar-group"><div class="skill-bar-header"><span>Verilog HDL</span><span class="skill-pct">75%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="--w:75%"></div></div></div>
+        <div class="skill-bar-group"><div class="skill-bar-header"><span>PCB Design (KiCad)</span><span class="skill-pct">65%</span></div><div class="skill-bar-track"><div class="skill-bar-fill" style="--w:65%"></div></div></div>
+      </div>
+
+      <!-- SKILL CATEGORIES -->
+      <div class="skill-cats" style="margin-top:2rem;">
+        <div class="skill-cat">
+          <div class="skill-cat-title">⚡ Languages</div>
+          <div class="skill-pills">
+            <span class="pill">C</span><span class="pill">C++</span><span class="pill">Python</span><span class="pill">Embedded C</span><span class="pill">Verilog</span>
+          </div>
+        </div>
+        <div class="skill-cat">
+          <div class="skill-cat-title">🛠 EDA Tools</div>
+          <div class="skill-pills">
+            <span class="pill pill-blue">MATLAB</span><span class="pill pill-blue">Vivado</span><span class="pill pill-blue">Keil µVision</span><span class="pill pill-blue">LTSpice</span>
+          </div>
+        </div>
+        <div class="skill-cat">
+          <div class="skill-cat-title">🔌 Hardware</div>
+          <div class="skill-pills">
+            <span class="pill">Arduino</span><span class="pill">ESP32</span><span class="pill">STM32</span><span class="pill">Raspberry Pi</span>
+          </div>
+        </div>
+        <div class="skill-cat">
+          <div class="skill-cat-title">🌐 Other</div>
+          <div class="skill-pills">
+            <span class="pill pill-blue">Git</span><span class="pill pill-blue">Linux</span><span class="pill pill-blue">KiCad</span><span class="pill pill-blue">Firebase</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- EXPERIENCE TIMELINE -->
+      <div style="margin-top:3rem;">
+        <h2 style="font-size:1.3rem; margin-bottom:1.5rem;">Experience & Education</h2>
+        <div class="timeline">
+          <div class="tl-item">
+            <div class="tl-date">Jun 2025 – Jul 2025</div>
+            <div class="tl-title">Embedded Systems Intern</div>
+            <div class="tl-sub">EVER Electronics Pvt. Ltd. · Pune</div>
+            <div class="tl-desc">Wrote and debugged Embedded C firmware for ARM Cortex-M products. Ran hardware-in-loop tests on sensor modules and cut bug-reporting turnaround by 20%.</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-date">2023 – 2027 (Expected)</div>
+            <div class="tl-title">B.E. — Electronics & Telecommunication Engineering</div>
+            <div class="tl-sub">Your College Name, Ahilyanagar · CGPA: 7.52</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-date">2021 – 2023</div>
+            <div class="tl-title">Higher Secondary Certificate (12th) — PCM</div>
+            <div class="tl-sub">Jawahar Junior College, Ahilyanagar · 60.67%</div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-date">2021</div>
+            <div class="tl-title">Secondary School Certificate (10th)</div>
+            <div class="tl-sub">Jawahar Madhyamik Vidyalaya Chanda · 80.20%</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- INTERESTS -->
+      <div style="margin-top:2.5rem;">
+        <h2 style="font-size:1.3rem; margin-bottom:.8rem;">Interests</h2>
+        <div class="interests-grid">
+          <div class="interest-card"><div class="ic-icon">📡</div>RF & Antenna Design</div>
+          <div class="interest-card"><div class="ic-icon">🔓</div>Open-source Hardware (RISC-V)</div>
+          <div class="interest-card"><div class="ic-icon">💻</div>Competitive Coding</div>
+          <div class="interest-card"><div class="ic-icon">🔧</div>Electronics DIY</div>
+          <div class="interest-card"><div class="ic-icon">📄</div>Tech Research Papers</div>
+          <div class="interest-card"><div class="ic-icon">🤖</div>Applied ML</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-logo">Krushna<span>.</span></div>
+  <div class="footer-links">
+    <a href="../index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="projects.html">Projects</a>
+    <a href="resume.html">Resume</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <p class="footer-copy">© 2025 Krushna Balasaheb Dahatonde</p>
+</footer>
+
+<script src="../js/main.js"></script>
+<script>
+// Animate skill bars on scroll
+const bars = document.querySelectorAll('.skill-bar-fill');
+const barObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('animate'); });
+}, { threshold: 0.3 });
+bars.forEach(b => barObs.observe(b));
+</script>
+</body>
+</html>
